@@ -21,5 +21,6 @@
 
   setTimeout(() => {
     loading.value = false;
+    // electronAPI.invokeTest('123');
   }, 1500);
 </script>

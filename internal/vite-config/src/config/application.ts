@@ -1,3 +1,4 @@
+import { copyFile, mkdirSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import dayjs from 'dayjs';
@@ -19,8 +20,11 @@ function defineApplicationConfig(defineOptions: DefineOptions = {}) {
   const { overrides = {} } = defineOptions;
 
   return defineConfig(async ({ command, mode }) => {
+    process.env.NODE_ENV_ELECTRON_VITE = 'production';
+    rmSync('dist-electron', { recursive: true, force: true }); //待定
     const root = process.cwd();
     const isBuild = command === 'build';
+    const isServe = command === 'serve';
     const { VITE_PUBLIC_PATH, VITE_USE_MOCK, VITE_BUILD_COMPRESS, VITE_ENABLE_ANALYZE } = loadEnv(
       mode,
       root,
@@ -33,6 +37,7 @@ function defineApplicationConfig(defineOptions: DefineOptions = {}) {
       enableAnalyze: VITE_ENABLE_ANALYZE === 'true',
       enableMock: VITE_USE_MOCK === 'true',
       compress: VITE_BUILD_COMPRESS,
+      isServe,
     });
 
     const pathResolve = (pathname: string) => resolve(root, '.', pathname);

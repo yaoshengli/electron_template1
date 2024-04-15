@@ -50,6 +50,10 @@
     "arrayExport": "Array数据导出",
     "importExcel": "导入"
   },
+  "webview":{
+    "webview":"webview",
+    "index":"tabs"
+  },
   "feat": {
     "feat": "功能",
     "icon": "图标",

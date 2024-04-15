@@ -23,5 +23,8 @@
     "mock/**/*.ts",
     "vite.config.ts"
   ],
+  "references": [
+    { "path": "./tsconfig1.json" }
+  ],
   "exclude": ["node_modules", "tests/server/**/*.ts", "dist", "**/*.js"]
 }

@@ -10,7 +10,7 @@ import { PAGE_NOT_FOUND_ROUTE } from '@/router/routes/basic';
 import { RootRoute } from '@/router/routes';
 
 const LOGIN_PATH = PageEnum.BASE_LOGIN;
-
+// const TABS = PageEnum.TABS;
 const ROOT_PATH = RootRoute.path;
 
 const whitePathList: PageEnum[] = [LOGIN_PATH];
@@ -33,6 +33,7 @@ export function createPermissionGuard(router: Router) {
 
     // Whitelist can be directly entered
     if (whitePathList.includes(to.path as PageEnum)) {
+      console.log(to.path);
       if (to.path === LOGIN_PATH && token) {
         const isSessionTimeout = userStore.getSessionTimeout;
         try {
